@@ -9,10 +9,7 @@ const activeCardColor = Color(0xFF1D1E33);
 const inactiveCardColor = Color(0xFF111328);
 const bottomContainerColor = Color(0xFFEB1555);
 
-enum Gender {
-  MALE,
-  FEMALE
-}
+enum Gender { MALE, FEMALE }
 
 class InputPage extends StatefulWidget {
   @override
@@ -23,7 +20,9 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender;
 
   void setSelectedGender(Gender gender) {
-    selectedGender = gender;
+    setState(() {
+      selectedGender = gender;
+    });
   }
 
   Color getGenderCardColor(Gender gender) {
@@ -45,34 +44,22 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        setSelectedGender(Gender.MALE);
-                      });
-                    },
-                    child: ReusableCard(
-                      color: getGenderCardColor(Gender.MALE),
-                      child: SexCardContent(
-                        icon: FontAwesomeIcons.mars,
-                        label: 'MALE',
-                      ),
+                  child: ReusableCard(
+                    onTap: () => setSelectedGender(Gender.MALE),
+                    color: getGenderCardColor(Gender.MALE),
+                    child: SexCardContent(
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        setSelectedGender(Gender.FEMALE);
-                      });
-                    },
-                    child: ReusableCard(
-                      color: getGenderCardColor(Gender.FEMALE),
-                      child: SexCardContent(
-                        icon: FontAwesomeIcons.venus,
-                        label: 'FEMALE',
-                      ),
+                  child: ReusableCard(
+                    onTap: () => setSelectedGender(Gender.FEMALE),
+                    color: getGenderCardColor(Gender.FEMALE),
+                    child: SexCardContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'FEMALE',
                     ),
                   ),
                 ),
