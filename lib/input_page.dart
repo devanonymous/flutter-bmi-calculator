@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 import 'reusable_card.dart';
-import 'sex_card_content.dart';
+import 'gender_card_content.dart';
 
 enum Gender { MALE, FEMALE }
 
@@ -51,7 +51,7 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     onTap: () => setSelectedGender(Gender.MALE),
                     color: getGenderCardColor(Gender.MALE),
-                    child: SexCardContent(
+                    child: GenderCardContent(
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
                     ),
@@ -61,7 +61,7 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     onTap: () => setSelectedGender(Gender.FEMALE),
                     color: getGenderCardColor(Gender.FEMALE),
-                    child: SexCardContent(
+                    child: GenderCardContent(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
                     ),
