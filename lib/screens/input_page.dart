@@ -6,6 +6,7 @@ import '../components/bottom_button.dart';
 import '../constants.dart';
 import '../components/reusable_card.dart';
 import '../components/gender_card_content.dart';
+import '../calculator.dart';
 
 enum Gender { MALE, FEMALE }
 
@@ -222,10 +223,17 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             title: 'CALCULATE',
             onTap: () {
+              BMICalculator calculator =
+                  BMICalculator(height: height, weight: weight);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultPage(),
+                  builder: (context) => ResultPage(
+                    bmiResult: calculator.getBMIScore(),
+                    interpretation: calculator.getInterpretation(),
+                    resultText: calculator.getResult(),
+                  ),
                 ),
               );
             },
